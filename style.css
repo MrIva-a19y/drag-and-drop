@@ -1,0 +1,54 @@
+.black-ops-one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+header h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+.slider {
+  width: 100%;
+  max-width: 800px;
+  margin: 1rem auto;
+  position: relative;
+  display: flex;
+}
+a {
+  text-decoration: none;
+  display: block;
+  width: 300px;
+  color: inherit;
+}
+a:hover figure figcaption {
+  color: #000;
+}
+a figure {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: max-content;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+figcaption {
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 1rem;
+}
