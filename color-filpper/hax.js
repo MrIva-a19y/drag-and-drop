@@ -16,3 +16,9 @@ function getRandomColor() {
   }
   return color;
 }
+
+colorText.addEventListener("click", function () {
+  // onclick cope the color text to clipboard
+  navigator.clipboard.writeText(colorText.textContent);
+  alert("Copied the color: " + colorText.textContent);
+});
