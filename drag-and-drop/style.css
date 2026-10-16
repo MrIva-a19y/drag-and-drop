@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  scrollbar-width: thin;
 }
 body {
   background-color: #f2f2f2;
@@ -10,6 +11,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  scrollbar-color: red;
+  position: relative;
 }
 .container {
   width: 100vw;
@@ -23,6 +26,9 @@ body {
   /* justify-content: center; */
   /* align-items: center; */
   position: relative;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
 }
 .container header {
   width: 100%;
@@ -34,10 +40,286 @@ body {
   border-bottom: 1px solid #ccc;
 }
 #add {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   padding: 0px 20px;
   font-size: 2rem;
   outline: none;
+  z-index: 20;
+  border-radius: 5%;
+  border: none;
+}
+.new-task,
+.new-room {
+  width: 60%;
+  height: 60%;
+  margin: auto;
+  position: absolute;
+  top: auto;
+  left: 20%;
+  bottom: 20%;
+  right: 20%;
+  z-index: 20;
+  border-radius: 10px;
+  background-color: #777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+.new-task h2,
+.new-room h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+.new-task form,
+.new-room form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.task-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 50%;
+}
+.task-actions button,
+.room-actions button {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#new-task-cancel,
+#new-room-cancel {
+  background-color: red;
+  color: #fff;
+}
+#add-room {
+  width: 50%;
+  background-color: #000;
+  color: #fff;
+}
+.new-task input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.room-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.room-inputs input[type="color"] {
+  margin-bottom: 0;
+  stroke: none;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 0;
+}
+.new-room input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.new-task input:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+.new-task button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #777;
+  cursor: pointer;
+}
+.task-bg {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: none;
+  /* border-radius: 10px; */
+}
+.task-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  overflow-y: auto;
+  flex-direction: column;
+  position: relative;
+  border-left: 1px solid #ccc;
+  overflow-y: scroll;
+}
+.content-container {
+  width: 100%;
+  height: 50%;
+  overflow-y: scroll;
+  flex: 1;
+}
+.task-container h3 {
+  margin: 10px 0;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+.task-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px;
+  gap: 10px;
+}
+/* .task-list li {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.task-item {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-cancel-task {
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #eee;
+  color: red;
+  font-weight: lighter;
+  visibility: hidden;
+}
+.btn-cancel-task:hover {
+  background-color: red;
+  color: #eee;
+}
+.task-item:hover .btn-cancel-task {
+  visibility: visible;
+}
+.room-actions {
+  margin-top: 2rem;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.rooms-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+  height: 100%;
+}
+
+.room-content {
+  width: 200px;
+  padding: 5px;
+  height: 200px;
+  border-radius: 1rem;
+  overflow-y: scroll;
+}
+.room-header {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-counter {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.notifaction {
+  width: 30%;
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2px;
+  left: 0px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 0 1rem 1rem 0;
+  transition: width 2ms ease-in-out;
+}
+.no-room-avilable,
+.no-task-avilable {
+  font-weight: 100;
+  color: gray;
+  align-self: center;
+  margin: auto;
+}
+@media screen and (width < 500px) {
+  .container {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .task-container {
+    width: 100%;
+    height: 50%;
+  }
+  .rooms-container,
+  .task-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .new-task,
+  .new-room {
+    width: 100%;
+    height: 60%;
+    margin: auto;
+    position: absolute;
+    top: auto;
+    left: 0%;
+    bottom: 20%;
+    right: 0%;
+    z-index: 20;
+    border-radius: 10px;
+    background-color: #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
 }

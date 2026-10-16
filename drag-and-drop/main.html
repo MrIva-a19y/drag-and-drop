@@ -8,13 +8,56 @@
   </head>
   <body>
     <main class="container">
-      <header>
-        <h1>Drag and Drop</h1>
-      </header>
+      <div class="content-container">
+        <header>
+          <h1>Drag and Drop</h1>
+        </header>
+        <div class="rooms-container"></div>
+      </div>
       <div class="btn">
         <button id="add">+</button>
       </div>
+      <div class="task-bg"></div>
+      <div class="new-room">
+        <h2>New Room</h2>
+        <form id="new-room-form">
+          <div class="room-inputs">
+            <input
+              type="text"
+              id="new-room-input"
+              placeholder="Enter a room name"
+              autofocus
+            />
+            <input type="color" name="room-color" id="room-color" />
+          </div>
+          <div class="room-actions">
+            <button type="submit" id="new-room-submit">Add Room</button>
+            <button type="button" id="new-room-cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div class="new-task">
+        <h2>New Task</h2>
+        <form id="new-task-form">
+          <input
+            type="text"
+            id="new-task-input"
+            placeholder="Enter a new task"
+            autofocus
+          />
+          <div class="task-actions">
+            <button type="submit" id="new-task-submit">Add Task</button>
+            <button type="button" id="new-task-cancel">Cancel</button>
+          </div>
+          <button id="add-room">Add Room</button>
+        </form>
+      </div>
+      <div class="task-container">
+        <h3>Task List</h3>
+
+        <ul class="task-list" id="task-list"></ul>
+      </div>
     </main>
-    <script src="dnd.js" defer></script>
   </body>
+  <script src="dnd.js"></script>
 </html>
